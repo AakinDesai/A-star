@@ -3,7 +3,7 @@
 
 int main()
 {
-    AStar::Generator generator;
+    AStar::maps generator;
     int r, c, w, wr, wc, sr, sc, dr, dc;
 
     std::cout << "Enter number of row of World :";
