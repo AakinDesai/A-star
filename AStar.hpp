@@ -27,14 +27,14 @@ namespace AStar
 
     using NodeSet = std::vector<Node*>;
 
-    class Generator
+    class maps
     {
         bool detectCollision(Vec2i coordinates_);
         Node* findNodeOnList(NodeSet& nodes_, Vec2i coordinates_);
         void releaseNodes(NodeSet& nodes_);
 
     public:
-        Generator();
+        maps();
         void setWorldSize(Vec2i worldSize_);
         void setDiagonalMovement(bool enable_);
         void setHeuristic(HeuristicFunction heuristic_);
