@@ -25,7 +25,7 @@ AStar::uint AStar::Node::getScore()
     return G + H;
 }
 
-AStar::Generator::Generator()
+AStar::maps::maps()
 {
     setDiagonalMovement(false);
     setHeuristic(&Heuristic::manhattan);
@@ -35,27 +35,27 @@ AStar::Generator::Generator()
     };
 }
 
-void AStar::Generator::setWorldSize(Vec2i worldSize_)
+void AStar::maps::setWorldSize(Vec2i worldSize_)
 {
     worldSize = worldSize_;
 }
 
-void AStar::Generator::setDiagonalMovement(bool enable_)
+void AStar::maps::setDiagonalMovement(bool enable_)
 {
     directions = (enable_ ? 8 : 4);
 }
 
-void AStar::Generator::setHeuristic(HeuristicFunction heuristic_)
+void AStar::maps::setHeuristic(HeuristicFunction heuristic_)
 {
     heuristic = std::bind(heuristic_, _1, _2);
 }
 
-void AStar::Generator::addCollision(Vec2i coordinates_)
+void AStar::maps::addCollision(Vec2i coordinates_)
 {
     walls.push_back(coordinates_);
 }
 
-void AStar::Generator::removeCollision(Vec2i coordinates_)
+void AStar::maps::removeCollision(Vec2i coordinates_)
 {
     auto it = std::find(walls.begin(), walls.end(), coordinates_);
     if (it != walls.end()) {
@@ -63,12 +63,12 @@ void AStar::Generator::removeCollision(Vec2i coordinates_)
     }
 }
 
-void AStar::Generator::clearCollisions()
+void AStar::maps::clearCollisions()
 {
     walls.clear();
 }
 
-AStar::CoordinateList AStar::Generator::findPath(Vec2i source_, Vec2i target_)
+AStar::CoordinateList AStar::maps::findPath(Vec2i source_, Vec2i target_)
 {
     Node *current = nullptr;
     NodeSet openSet, closedSet;
@@ -130,7 +130,7 @@ AStar::CoordinateList AStar::Generator::findPath(Vec2i source_, Vec2i target_)
     return path;
 }
 
-AStar::Node* AStar::Generator::findNodeOnList(NodeSet& nodes_, Vec2i coordinates_)
+AStar::Node* AStar::maps::findNodeOnList(NodeSet& nodes_, Vec2i coordinates_)
 {
     for (auto node : nodes_) {
         if (node->coordinates == coordinates_) {
@@ -140,7 +140,7 @@ AStar::Node* AStar::Generator::findNodeOnList(NodeSet& nodes_, Vec2i coordinates
     return nullptr;
 }
 
-void AStar::Generator::releaseNodes(NodeSet& nodes_)
+void AStar::maps::releaseNodes(NodeSet& nodes_)
 {
     for (auto it = nodes_.begin(); it != nodes_.end();) {
         delete *it;
@@ -148,7 +148,7 @@ void AStar::Generator::releaseNodes(NodeSet& nodes_)
     }
 }
 
-bool AStar::Generator::detectCollision(Vec2i coordinates_)
+bool AStar::maps::detectCollision(Vec2i coordinates_)
 {
     if (coordinates_.x < 0 || coordinates_.x >= worldSize.x ||
         coordinates_.y < 0 || coordinates_.y >= worldSize.y ||
