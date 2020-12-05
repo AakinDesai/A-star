@@ -4,24 +4,24 @@
 
 namespace AStar
 {
-    struct Vec2i
+    struct coor
     {
         int x, y;
 
-        bool operator == (const Vec2i& coordinates_);
+        bool operator == (const coor& coordinates_);
     };
 
     using uint = unsigned int;
-    using HeuristicFunction = std::function<uint(Vec2i, Vec2i)>;
-    using CoordinateList = std::vector<Vec2i>;
+    using HeuristicFunction = std::function<uint(coor, coor)>;
+    using CoordinateList = std::vector<coor>;
 
     struct Node
     {
         uint G, H;
-        Vec2i coordinates;
+        coor coordinates;
         Node *parent;
 
-        Node(Vec2i coord_, Node *parent_ = nullptr);
+        Node(coor coord_, Node *parent_ = nullptr);
         uint getScore();
     };
 
@@ -29,34 +29,34 @@ namespace AStar
 
     class maps
     {
-        bool detectCollision(Vec2i coordinates_);
-        Node* findNodeOnList(NodeSet& nodes_, Vec2i coordinates_);
+        bool detectCollision(coor coordinates_);
+        Node* findNodeOnList(NodeSet& nodes_, coor coordinates_);
         void releaseNodes(NodeSet& nodes_);
 
     public:
         maps();
-        void setWorldSize(Vec2i worldSize_);
+        void setWorldSize(coor worldSize_);
         void setDiagonalMovement(bool enable_);
         void setHeuristic(HeuristicFunction heuristic_);
-        CoordinateList findPath(Vec2i source_, Vec2i target_);
-        void addCollision(Vec2i coordinates_);
-        void removeCollision(Vec2i coordinates_);
+        CoordinateList findPath(coor source_, coor target_);
+        void addCollision(coor coordinates_);
+        void removeCollision(coor coordinates_);
         void clearCollisions();
 
     private:
         HeuristicFunction heuristic;
         CoordinateList direction, walls;
-        Vec2i worldSize;
+        coor worldSize;
         uint directions;
     };
 
     class Heuristic
     {
-        static Vec2i getDelta(Vec2i source_, Vec2i target_);
+        static coor getDelta(coor source_, coor target_);
 
     public:
-        static uint manhattan(Vec2i source_, Vec2i target_);
-        static uint euclidean(Vec2i source_, Vec2i target_);
-        static uint octagonal(Vec2i source_, Vec2i target_);
+        static uint manhattan(coor source_, coor target_);
+        static uint euclidean(coor source_, coor target_);
+        static uint octagonal(coor source_, coor target_);
     };
 }
