@@ -10,8 +10,8 @@ A* expands paths that are already less expensive by using this function:
 
 where
 
-*f(n)* = total estimated cost of path through node n.
+- *f(n)* = total estimated cost of path through node n.
 
-*g(n)* = cost so far to reach node n.
+- *g(n)* = cost so far to reach node n.
 
-*h(n)* = estimated cost from n to goal. This is the heuristic part of the cost function, so it is like a guess. 
+- *h(n)* = estimated cost from n to goal. This is the heuristic part of the cost function, so it is like a guess. 
