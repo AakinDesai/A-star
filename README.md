@@ -6,4 +6,4 @@ A* works by making a lowest-cost path tree from the start node to the target nod
 
 A* expands paths that are already less expensive by using this function: 
 
-<p align="center"> _f(n) = g(n) + h(n)_ </p>
+<p align="center"> *This text will be italic* </p>
