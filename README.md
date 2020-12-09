@@ -6,12 +6,12 @@ A* works by making a lowest-cost path tree from the start node to the target nod
 
 A* expands paths that are already less expensive by using this function: 
 
-<div align="center">f(n) = g(n) + h(n)</div>
+                                                                        f(n) = g(n) + h(n)          
 
 where
 
-- *f(n)* = total estimated cost of path through node n.
+*f(n)* = total estimated cost of path through node n.
 
-- *g(n)* = cost so far to reach node n.
+*g(n)* = cost so far to reach node n.
 
-- *h(n)* = estimated cost from n to goal. This is the heuristic part of the cost function, so it is like a guess. 
+*h(n)* = estimated cost from n to goal. This is the heuristic part of the cost function, so it is like a guess. 
