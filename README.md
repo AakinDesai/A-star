@@ -5,3 +5,4 @@ A* (pronounced as "A star") is a computer algorithm that is widely used in pathf
 A* works by making a lowest-cost path tree from the start node to the target node. What makes A* different and better for many searches is that for each node, A* uses a function f(n) that gives an estimate of the total cost of a path using that node. Therefore, A* is a heuristic function, which differs from an algorithm in that a heuristic is more of an estimate and is not necessarily provably correct. 
 
 A* expands paths that are already less expensive by using this function: 
+<img src="https://render.githubusercontent.com/render/math?math=\hat{x_k^-} = f(n) = g(n) + h(n)">
