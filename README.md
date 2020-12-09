@@ -16,13 +16,4 @@ where
 
 *h(n)* = estimated cost from n to goal. This is the heuristic part of the cost function, so it is like a guess. 
 
-### Implementation
-
-1. Write size of the world.
-
-2. Write number of obstacles and position of obstacles in form of (x,y) coordinate system.
-
-3. Write the position of source and destination.
-
-4. Output would be in form of co-ordinates from destination to source.
 
